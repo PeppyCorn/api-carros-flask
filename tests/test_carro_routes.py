@@ -17,8 +17,8 @@ def test_home(client):
 
 
 def test_criar_carro(client):
-    with patch("storage.carregar_carros", return_value=fake_carros), \
-         patch("storage.salvar_carros"):
+    with patch("app.storage.carregar_carros", return_value=fake_carros), \
+         patch("app.storage.salvar_carros"):
 
         response = client.post(
             "/carros",
@@ -50,8 +50,8 @@ def test_andar_carro(client):
         "velocidade": 0
     }]
 
-    with patch("storage.carregar_carros", return_value=fake_carros), \
-         patch("storage.salvar_carros"):
+    with patch("app.storage.carregar_carros", return_value=fake_carros), \
+         patch("app.storage.salvar_carros"):
 
         response = client.post(
             "/carros/1/andar",
@@ -73,8 +73,8 @@ def test_parar_carro(client):
         "velocidade": 80
     }]
 
-    with patch("storage.carregar_carros", return_value=fake_carros), \
-         patch("storage.salvar_carros"):
+    with patch("app.storage.carregar_carros", return_value=fake_carros), \
+         patch("app.storage.salvar_carros"):
 
         response = client.post("/carros/1/parar")
 

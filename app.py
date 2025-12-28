@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from utils.buscar_carro import buscar_carro_por_id
 from services.carro_service import andar_carro, deletar_carro
 from carro import Carro
-import storage
+import storage.storage as storage, os
 
 app = Flask(__name__)
 
@@ -128,5 +128,6 @@ def deletar(id):
     return jsonify({"mensagem": "Carro deletado com sucesso"})
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
     

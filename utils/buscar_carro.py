@@ -1,4 +1,4 @@
-import storage
+import storage.storage as storage
 
 def buscar_carro_por_id(id):
     carros = storage.carregar_carros()

@@ -1,7 +1,9 @@
 import json
 import os
 
-ARQUIVO = "Carro/data/carros.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "..", "data")
+ARQUIVO = os.path.join(DATA_DIR, "carros.json")
 
 def carregar_carros():
     if not os.path.exists(ARQUIVO):
@@ -12,8 +14,9 @@ def carregar_carros():
 
 
 def salvar_carros(carros):
+    os.makedirs(DATA_DIR, exist_ok=True)
     with open(ARQUIVO, "w", encoding="utf-8") as f:
-        json.dump(carros, f, indent=4, ensure_ascii=False)
+        json.dump(carros, f, ensure_ascii=False, indent=4)
 
 
 def gerar_novo_id():
