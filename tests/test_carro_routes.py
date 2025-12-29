@@ -74,7 +74,7 @@ def test_parar_carro(client):
     }]
 
     with patch("app.storage.carregar_carros", return_value=fake_carros), \
-         patch("app.storage.salvar_carros"):
+        patch("app.storage.salvar_carros"):
 
         response = client.post("/carros/1/parar")
 
